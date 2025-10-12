@@ -843,3 +843,198 @@ body {
     background: #268bd2;
     border-color: #268bd2;
 }
+
+/* Footer Styles */
+.footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid var(--footer-border, #e1e8ed);
+    background: transparent;
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer p {
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+    color: var(--footer-text, #666);
+    font-weight: 500;
+}
+
+.footer .heart {
+    color: #e74c3c;
+    font-size: 1.1em;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: var(--social-bg, rgba(255, 255, 255, 0.1));
+    color: var(--social-text, #666);
+    border: 1px solid var(--social-border, rgba(0, 0, 0, 0.1));
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-link svg {
+    flex-shrink: 0;
+}
+
+.github-link {
+    color: var(--github-text, #24292e);
+}
+
+.github-link:hover {
+    background: var(--github-hover-bg, #f6f8fa);
+    color: var(--github-hover-text, #0366d6);
+    border-color: var(--github-hover-border, #0366d6);
+}
+
+.instagram-link {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    border: none;
+}
+
+.instagram-link:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    filter: brightness(1.1);
+    color: white;
+}
+
+/* Footer Theme Support */
+.theme-dark .footer {
+    border-top-color: #444;
+}
+
+.theme-dark .footer p {
+    color: #ccc;
+}
+
+.theme-dark .social-link {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ccc;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-dark .github-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #58a6ff;
+    border-color: #58a6ff;
+}
+
+.theme-dracula .footer {
+    border-top-color: #44475a;
+}
+
+.theme-dracula .footer p {
+    color: #f8f8f2;
+}
+
+.theme-dracula .social-link {
+    background: rgba(255, 255, 255, 0.05);
+    color: #f8f8f2;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-dracula .github-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #50fa7b;
+    border-color: #50fa7b;
+}
+
+.theme-catppuccin-mocha .footer {
+    border-top-color: #585b70;
+}
+
+.theme-catppuccin-mocha .footer p {
+    color: #cdd6f4;
+}
+
+.theme-catppuccin-mocha .social-link {
+    background: rgba(255, 255, 255, 0.05);
+    color: #cdd6f4;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-catppuccin-mocha .github-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #89b4fa;
+    border-color: #89b4fa;
+}
+
+.theme-monokai .footer {
+    border-top-color: #49483e;
+}
+
+.theme-monokai .footer p {
+    color: #f8f8f2;
+}
+
+.theme-monokai .social-link {
+    background: rgba(255, 255, 255, 0.05);
+    color: #f8f8f2;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-monokai .github-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #a6e22e;
+    border-color: #a6e22e;
+}
+
+.theme-solarized-dark .footer {
+    border-top-color: #586e75;
+}
+
+.theme-solarized-dark .footer p {
+    color: #93a1a1;
+}
+
+.theme-solarized-dark .social-link {
+    background: rgba(255, 255, 255, 0.05);
+    color: #93a1a1;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-solarized-dark .github-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #268bd2;
+    border-color: #268bd2;
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+    .social-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-link {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+}
