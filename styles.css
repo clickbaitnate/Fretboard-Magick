@@ -104,6 +104,48 @@ h1 .settings {
     margin-bottom: 30px;
 }
 
+.neck-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    cursor: grab;
+    user-select: none;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.neck-wrapper:active {
+    cursor: grabbing;
+}
+
+.neck-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.neck-wrapper::-webkit-scrollbar-track {
+    background: var(--scrollbar-track, rgba(0, 0, 0, 0.1));
+    border-radius: 4px;
+}
+
+.neck-wrapper::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb, rgba(0, 0, 0, 0.3));
+    border-radius: 4px;
+}
+
+.neck-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover, rgba(0, 0, 0, 0.5));
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .neck-wrapper {
+        max-width: calc(100vw - 40px);
+    }
+
+    #guitar-neck {
+        min-width: 1200px; /* Ensure at least frets 1-12 are visible */
+    }
+}
+
 canvas {
     border: 3px solid var(--canvas-border, #2c3e50);
     border-radius: 10px;
@@ -851,6 +893,10 @@ body {
     text-align: center;
     border-top: 1px solid var(--footer-border, #e1e8ed);
     background: transparent;
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footer-content {
@@ -945,6 +991,18 @@ body {
     border-color: #58a6ff;
 }
 
+.theme-dark .neck-wrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-dark .neck-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.theme-dark .neck-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
 .theme-dracula .footer {
     border-top-color: #44475a;
 }
@@ -1023,6 +1081,27 @@ body {
     background: rgba(255, 255, 255, 0.1);
     color: #268bd2;
     border-color: #268bd2;
+}
+
+.theme-dracula .neck-wrapper::-webkit-scrollbar-track,
+.theme-catppuccin-mocha .neck-wrapper::-webkit-scrollbar-track,
+.theme-monokai .neck-wrapper::-webkit-scrollbar-track,
+.theme-solarized-dark .neck-wrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-dracula .neck-wrapper::-webkit-scrollbar-thumb,
+.theme-catppuccin-mocha .neck-wrapper::-webkit-scrollbar-thumb,
+.theme-monokai .neck-wrapper::-webkit-scrollbar-thumb,
+.theme-solarized-dark .neck-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.theme-dracula .neck-wrapper::-webkit-scrollbar-thumb:hover,
+.theme-catppuccin-mocha .neck-wrapper::-webkit-scrollbar-thumb:hover,
+.theme-monokai .neck-wrapper::-webkit-scrollbar-thumb:hover,
+.theme-solarized-dark .neck-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive footer */

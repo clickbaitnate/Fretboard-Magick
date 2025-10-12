@@ -3,9 +3,15 @@ class GuitarVisualizer {
     constructor() {
         this.canvas = document.getElementById('guitar-neck');
         this.ctx = this.canvas.getContext('2d');
-        this.frets = 20; // Number of frets to display
+        this.frets = 24; // Number of frets to display
         this.strings = 6; // Number of strings
         this.currentInstrument = 'guitar'; // Current instrument
+
+        // Drag functionality
+        this.isDragging = false;
+        this.startX = 0;
+        this.scrollLeft = 0;
+        this.neckWrapper = document.querySelector('.neck-wrapper');
 
         // Initialize instrument configurations
         this.instruments = {
@@ -277,6 +283,57 @@ class GuitarVisualizer {
         document.getElementById('show-scale-indicators').addEventListener('change', (e) => {
             this.showScaleIndicators = e.target.checked;
             this.draw();
+        });
+
+        // Initialize drag functionality for neck scrolling
+        this.initDragListeners();
+    }
+
+    initDragListeners() {
+        if (!this.neckWrapper) return;
+
+        // Mouse events
+        this.neckWrapper.addEventListener('mousedown', (e) => {
+            this.isDragging = true;
+            this.startX = e.pageX - this.neckWrapper.offsetLeft;
+            this.scrollLeft = this.neckWrapper.scrollLeft;
+            this.neckWrapper.style.cursor = 'grabbing';
+        });
+
+        this.neckWrapper.addEventListener('mouseleave', () => {
+            this.isDragging = false;
+            this.neckWrapper.style.cursor = 'grab';
+        });
+
+        this.neckWrapper.addEventListener('mouseup', () => {
+            this.isDragging = false;
+            this.neckWrapper.style.cursor = 'grab';
+        });
+
+        this.neckWrapper.addEventListener('mousemove', (e) => {
+            if (!this.isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - this.neckWrapper.offsetLeft;
+            const walk = (x - this.startX) * 2; // Scroll speed multiplier
+            this.neckWrapper.scrollLeft = this.scrollLeft - walk;
+        });
+
+        // Touch events for mobile
+        this.neckWrapper.addEventListener('touchstart', (e) => {
+            this.isDragging = true;
+            this.startX = e.touches[0].pageX - this.neckWrapper.offsetLeft;
+            this.scrollLeft = this.neckWrapper.scrollLeft;
+        });
+
+        this.neckWrapper.addEventListener('touchend', () => {
+            this.isDragging = false;
+        });
+
+        this.neckWrapper.addEventListener('touchmove', (e) => {
+            if (!this.isDragging) return;
+            const x = e.touches[0].pageX - this.neckWrapper.offsetLeft;
+            const walk = (x - this.startX) * 2; // Scroll speed multiplier
+            this.neckWrapper.scrollLeft = this.scrollLeft - walk;
         });
     }
 
