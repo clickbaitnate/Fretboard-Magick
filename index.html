@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Neck Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1 id="main-header">String Instrument Visualizer</h1>
+            <button id="settings-btn" class="settings-btn">⚙️ Settings</button>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="instrument-select">Instrument:</label>
+                <select id="instrument-select">
+                    <option value="guitar">Guitar (6 strings)</option>
+                    <option value="guitar-7">Guitar (7 strings)</option>
+                    <option value="guitar-8">Guitar (8 strings)</option>
+                    <option value="baritone">Baritone Guitar (6 strings)</option>
+                    <option value="bass-4">Bass Guitar (4 strings)</option>
+                    <option value="bass-5">Bass Guitar (5 strings)</option>
+                    <option value="bass-6">Bass Guitar (6 strings)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="tuning-select">Tuning:</label>
+                <select id="tuning-select">
+                    <option value="standard">Standard (EADGBE)</option>
+                    <option value="open-f9">Open F9Major (FACGCE)</option>
+                    <option value="drop-d">Drop D (DADGBE)</option>
+                    <option value="drop-c">Drop C (CGCFAD)</option>
+                    <option value="drop-b">Drop B (BF#BEG#C#)</option>
+                    <option value="drop-a">Drop A (AEADG#B)</option>
+                    <option value="double-drop-d">Double Drop D (DADGBD)</option>
+                    <option value="open-g">Open G (DGDGBD)</option>
+                    <option value="open-a">Open A (EAC#EAE)</option>
+                    <option value="open-c">Open C (CGCGCE)</option>
+                    <option value="open-d">Open D (DADG#AD)</option>
+                    <option value="open-e">Open E (EBEG#BE)</option>
+                    <option value="dadgad">DADGAD</option>
+                    <option value="c6">C6 (CACGCE)</option>
+                    <option value="modal-d">Modal D (DADGAD)</option>
+                    <option value="half-step-down">Half Step Down (D#G#C#F#A#D#)</option>
+                    <option value="whole-step-down">Whole Step Down (DGCFAD)</option>
+                    <option value="nst">NST (C#G#D#A#FC#)</option>
+                    <option value="all-fourths">All Fourths (EADGCF)</option>
+                    <option value="major-thirds">Major Thirds (CEG#CEG#)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="scale-select">Scale:</label>
+                <select id="scale-select">
+                    <optgroup label="Basic Scales">
+                        <option value="major">Major</option>
+                        <option value="minor">Minor</option>
+                        <option value="harmonic-minor">Harmonic Minor</option>
+                        <option value="melodic-minor">Melodic Minor</option>
+                    </optgroup>
+                    <optgroup label="Major Modes">
+                        <option value="ionian">Ionian (Major)</option>
+                        <option value="dorian">Dorian</option>
+                        <option value="phrygian">Phrygian</option>
+                        <option value="lydian">Lydian</option>
+                        <option value="mixolydian">Mixolydian</option>
+                        <option value="aeolian">Aeolian (Natural Minor)</option>
+                        <option value="locrian">Locrian</option>
+                    </optgroup>
+                    <optgroup label="Harmonic Minor Modes">
+                        <option value="harmonic-minor-scale">Harmonic Minor</option>
+                        <option value="locrian-natural-6">Locrian Natural 6</option>
+                        <option value="ionian-augmented">Ionian Augmented</option>
+                        <option value="dorian-sharp-4">Dorian #4</option>
+                        <option value="phrygian-dominant">Phrygian Dominant</option>
+                        <option value="lydian-sharp-2">Lydian #2</option>
+                        <option value="super-locrian">Super Locrian</option>
+                    </optgroup>
+                    <optgroup label="Melodic Minor Modes">
+                        <option value="melodic-minor-scale">Melodic Minor</option>
+                        <option value="dorian-flat-2">Dorian b2</option>
+                        <option value="lydian-augmented-2">Lydian Augmented #2</option>
+                        <option value="lydian-dominant">Lydian Dominant</option>
+                        <option value="mixolydian-flat-6">Mixolydian b6</option>
+                        <option value="locrian-sharp-2">Locrian #2</option>
+                        <option value="altered">Altered</option>
+                    </optgroup>
+                    <optgroup label="Pentatonic Scales">
+                        <option value="pentatonic-major">Major Pentatonic</option>
+                        <option value="pentatonic-minor">Minor Pentatonic</option>
+                        <option value="pentatonic-dorian">Dorian Pentatonic</option>
+                        <option value="pentatonic-egyptian">Egyptian Pentatonic</option>
+                    </optgroup>
+                    <optgroup label="Blues Scales">
+                        <option value="blues">Blues (Minor)</option>
+                        <option value="blues-major">Major Blues</option>
+                    </optgroup>
+                    <optgroup label="Diminished & Augmented">
+                        <option value="diminished-whole-half">Diminished (Whole-Half)</option>
+                        <option value="diminished-half-whole">Diminished (Half-Whole)</option>
+                        <option value="augmented">Augmented</option>
+                        <option value="whole-tone">Whole Tone</option>
+                    </optgroup>
+                    <optgroup label="Bebop Scales">
+                        <option value="bebop-major">Bebop Major</option>
+                        <option value="bebop-dominant">Bebop Dominant</option>
+                        <option value="bebop-minor">Bebop Minor</option>
+                    </optgroup>
+                    <optgroup label="Hexatonic Scales">
+                        <option value="hexatonic-prometheus">Prometheus</option>
+                        <option value="hexatonic-tritone">Tritone</option>
+                    </optgroup>
+                    <optgroup label="Jazz Scales">
+                        <option value="dominant-7">Dominant 7</option>
+                        <option value="7-sharp-5">7#5</option>
+                        <option value="7-flat-9">7b9</option>
+                        <option value="9">9</option>
+                        <option value="11">11</option>
+                        <option value="13">13</option>
+                    </optgroup>
+                    <optgroup label="Other Scales">
+                        <option value="chromatic">Chromatic</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="root-select">Root Note:</label>
+                <select id="root-select">
+                    <option value="C">C</option>
+                    <option value="C#">C#</option>
+                    <option value="D">D</option>
+                    <option value="D#">D#</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="F#">F#</option>
+                    <option value="G">G</option>
+                    <option value="G#">G#</option>
+                    <option value="A">A</option>
+                    <option value="A#">A#</option>
+                    <option value="B">B</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="neck-container">
+            <canvas id="guitar-neck" width="1300" height="300"></canvas>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color scale-note"></div>
+                <span>Scale Note</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color root-note"></div>
+                <span>Root Note</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h3>Theme</h3>
+                    <div class="theme-options">
+                        <button class="theme-btn" data-theme="light">Light</button>
+                        <button class="theme-btn active" data-theme="dark">Dark</button>
+                        <button class="theme-btn" data-theme="dracula">Dracula</button>
+                        <button class="theme-btn" data-theme="catppuccin-mocha">Catppuccin</button>
+                        <button class="theme-btn" data-theme="monokai">Monokai</button>
+                        <button class="theme-btn" data-theme="solarized-dark">Solarized</button>
+                        <button class="theme-btn" data-theme="blue">Blue</button>
+                        <button class="theme-btn" data-theme="green">Green</button>
+                        <button class="theme-btn" data-theme="purple">Purple</button>
+                        <button class="theme-btn" data-theme="high-contrast">High Contrast</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h3>Neck Style</h3>
+                    <div class="style-options">
+                        <label class="style-option">
+                            <input type="checkbox" id="show-fret-numbers" checked> Show fret numbers
+                        </label>
+                        <label class="style-option">
+                            <input type="checkbox" id="show-string-labels" checked> Show string labels
+                        </label>
+                        <label class="style-option">
+                            <input type="checkbox" id="show-scale-indicators" checked> Show scale indicators
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
