@@ -10,8 +10,10 @@ body {
     color: #333;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .container {
@@ -888,15 +890,13 @@ body {
 
 /* Footer Styles */
 .footer {
-    margin-top: 40px;
+    margin-top: 60px;
     padding: 20px 0;
     text-align: center;
     border-top: 1px solid var(--footer-border, #e1e8ed);
     background: transparent;
     width: 100%;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1000px;
 }
 
 .footer-content {
@@ -1106,6 +1106,15 @@ body {
 
 /* Responsive footer */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .footer {
+        margin-top: 30px;
+        padding: 15px 0;
+    }
+
     .social-links {
         flex-direction: column;
         gap: 10px;
