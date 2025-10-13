@@ -437,7 +437,9 @@ class GuitarVisualizer {
         const width = this.canvas.width;
         const height = this.canvas.height;
         const stringSpacing = height / (this.strings + 1);
-        const fretSpacing = width / (this.frets + 1);
+        // Fret spacing should span from nut (50px offset) to end of strings (width - 20)
+        // For N frets, we need N+1 fret lines (nut + N frets)
+        const fretSpacing = (width - 70) / this.frets;
 
         // Draw frets (vertical lines)
         this.ctx.strokeStyle = fretLineColor;
@@ -466,8 +468,14 @@ class GuitarVisualizer {
             }
 
             // Add fret numbers under the frets
-            if (this.showFretNumbers && fret > 0 && fret <= this.frets) {
-                const numberX = (fret - 0.5) * fretSpacing + 50; // Position under the frets, not in the middle of inlays
+            if (this.showFretNumbers && fret >= 0 && fret <= this.frets) {
+                let numberX;
+                if (fret === 0) {
+                    // Position open string number near the nut
+                    numberX = 25;
+                } else {
+                    numberX = (fret - 0.5) * fretSpacing + 50; // Position under the frets, not in the middle of inlays
+                }
                 this.ctx.fillStyle = fretNumberColor;
                 this.ctx.font = '12px Arial';
                 this.ctx.textAlign = 'center';
@@ -541,13 +549,13 @@ class GuitarVisualizer {
             }
         }
 
-        // Then draw notes on the fretboard (only for frets 1+)
+        // Then draw notes on the fretboard (for frets 0+)
         for (let string = 1; string <= this.strings; string++) {
             const y = (this.strings - string + 1) * stringSpacing; // Match flipped string positions
             const openStringNote = tuning[string - 1];
             const openStringIndex = this.notes.indexOf(openStringNote);
 
-            for (let fret = 1; fret <= this.frets; fret++) {
+            for (let fret = 0; fret <= this.frets; fret++) {
                 // Calculate note at this fret position
                 // Each fret represents one semitone higher than the previous fret
                 const semitonesAboveOpen = fret;
@@ -560,8 +568,15 @@ class GuitarVisualizer {
                 const isRoot = intervalFromRoot === 0;
 
                 if (isInScale) {
-                    // Position between frets (correct for frets 1+)
-                    const x = (fret + 0.5) * fretSpacing + 50;
+                    // Position notes on the fretboard
+                    let x;
+                    if (fret === 0) {
+                        // Open strings positioned near the nut
+                        x = 35;
+                    } else {
+                        // Position between frets for frets 1+
+                        x = (fret + 0.5) * fretSpacing + 50;
+                    }
 
                     // Draw note circle
                     this.ctx.beginPath();
