@@ -468,14 +468,8 @@ class GuitarVisualizer {
             }
 
             // Add fret numbers under the frets
-            if (this.showFretNumbers && fret >= 0 && fret <= this.frets) {
-                let numberX;
-                if (fret === 0) {
-                    // Position open string number near the nut
-                    numberX = 25;
-                } else {
-                    numberX = (fret - 0.5) * fretSpacing + 50; // Position under the frets, not in the middle of inlays
-                }
+            if (this.showFretNumbers && fret > 0 && fret <= this.frets) {
+                const numberX = (fret - 0.5) * fretSpacing + 50; // Position under the frets, not in the middle of inlays
                 this.ctx.fillStyle = fretNumberColor;
                 this.ctx.font = '12px Arial';
                 this.ctx.textAlign = 'center';
@@ -549,13 +543,13 @@ class GuitarVisualizer {
             }
         }
 
-        // Then draw notes on the fretboard (for frets 0+)
+        // Then draw notes on the fretboard (only for frets 1+)
         for (let string = 1; string <= this.strings; string++) {
             const y = (this.strings - string + 1) * stringSpacing; // Match flipped string positions
             const openStringNote = tuning[string - 1];
             const openStringIndex = this.notes.indexOf(openStringNote);
 
-            for (let fret = 0; fret <= this.frets; fret++) {
+            for (let fret = 1; fret <= this.frets; fret++) {
                 // Calculate note at this fret position
                 // Each fret represents one semitone higher than the previous fret
                 const semitonesAboveOpen = fret;
@@ -568,15 +562,8 @@ class GuitarVisualizer {
                 const isRoot = intervalFromRoot === 0;
 
                 if (isInScale) {
-                    // Position notes on the fretboard
-                    let x;
-                    if (fret === 0) {
-                        // Open strings positioned near the nut
-                        x = 35;
-                    } else {
-                        // Position between frets for frets 1+
-                        x = (fret + 0.5) * fretSpacing + 50;
-                    }
+                    // Position between frets (correct for frets 1+)
+                    const x = (fret - 0.5) * fretSpacing + 50;
 
                     // Draw note circle
                     this.ctx.beginPath();
