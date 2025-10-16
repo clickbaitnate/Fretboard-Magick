@@ -2,7 +2,6 @@
 
 An interactive guitar fretboard visualizer that helps musicians understand scales, chords, and tunings across different instruments. Perfect for learning music theory and exploring fretboard patterns.
 
-![Guitar Visualizer Preview](https://via.placeholder.com/800x400/667eea/ffffff?text=Fretboard+Magick)
 
 ## 🌐 Live Demo
 
@@ -124,3 +123,4 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 *"Music is the universal language of mankind."* - Henry Wadsworth Longfellow
+
